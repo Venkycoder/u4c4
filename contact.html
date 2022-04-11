@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+</head>
+<style>
+     #navbar{
+        display: flex;
+        justify-content: space-between;
+        height:auto;
+        background-color: aquamarine;
+        border-radius: 5px;
+    }
+    #navbar{
+        font-size: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        width:300px;
+        margin: auto;
+        padding-top: 100px;
+    }
+    form>input{
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+    section{
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <div id="navbar">
+        <div>
+            <a rel="home"> Home</a>
+        </div>
+       <div>
+        <a rel="cont" href="./contact.html">Contact List</a>
+       </div>
+        <div>
+            <a rel="fav" href="./favourites.html">Favaroites</a>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mobile Number</th>
+                <th>Type</th>
+                <th>Favaroites</th>
+            </tr>
+            
+        </thead>
+        <tbody id="tBody">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    
+    var ctnList=JSON.parse(localStorage.getItem("contactList")) || [];
+    //console.log(ctnList);
+
+    function displayData(){
+        document.querySelector("#tBody").innerHTML='';
+        console.log(ctnList);
+        ctnList.forEach(function(data){
+            var tr=document.createElement("tr");
+
+            var td1=document.createElement("td");
+            td1.innerText=data.name;
+
+            var td2=document.createElement("td");
+            td2.innerText=data.number;
+            var td3=document.createElement("td");
+            td3.innerText=data.type;
+            var td4=document.createElement('p');
+            td4.innerText="Favaourit";
+            git
+
+            
+            tr.append(td1,td2,td3,td4);
+            document.querySelector("#tBody").append(tr);
+        });
+        
+        //console.log(tr);
+        
+
+    }
+    displayData();
+</script>
+</html>
