@@ -34,11 +34,18 @@
         margin-top: 20px;
         border-radius: 5px;
     }
+    a{
+        text-decoration: none;
+    }
+    table,th,td,tr{
+    border: 1px solid #bbb;
+    justify-content: center;
+}
 </style>
 <body>
     <div id="navbar">
         <div>
-            <a rel="home"> Home</a>
+            <a rel="home" href="./index.html"> Home</a>
         </div>
        <div>
         <a rel="cont" href="./contact.html">Contact List</a>
@@ -53,7 +60,7 @@
 
 
 
-
+<div>
 
 
     <table>
@@ -70,8 +77,17 @@
 
         </tbody>
     </table>
+</div>
 </body>
 <script>
+    var fav;
+
+if(localStorage.getItem("favo")===null){
+    fav = [];
+}
+else{
+    fav  = JSON.parse(localStorage.getItem("favo"));
+}
     
     var ctnList=JSON.parse(localStorage.getItem("contactList")) || [];
     //console.log(ctnList);
@@ -89,12 +105,22 @@
             td2.innerText=data.number;
             var td3=document.createElement("td");
             td3.innerText=data.type;
-            var td4=document.createElement('p');
-            td4.innerText="Favaourit";
-            git
+            
+    var favorite = document.createElement("p");
+    favorite.innerText = "Favorite";
+    favorite.style.color = "blue";
+    favorite.style.cursor = "pointer";
+    favorite.addEventListener("click",function(){
+        fav.push(data);
+        localStorage.setItem("favo",JSON.stringify(data));
+        alert("successfully add to favorite")
+
+
+
+    })
 
             
-            tr.append(td1,td2,td3,td4);
+            tr.append(td1,td2,td3,favorite);
             document.querySelector("#tBody").append(tr);
         });
         
