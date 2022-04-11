@@ -111,18 +111,17 @@ else{
     favorite.style.color = "blue";
     favorite.style.cursor = "pointer";
     favorite.addEventListener("click",function(){
+        event.preventDefault();
+        
         fav.push(data);
         localStorage.setItem("favo",JSON.stringify(data));
-        alert("successfully add to favorite")
-
-
-
-    })
+        alert("successfully add to favorite");
+    });
 
             
-            tr.append(td1,td2,td3,favorite);
-            document.querySelector("#tBody").append(tr);
-        });
+        tr.append(td1,td2,td3,favorite);
+        document.querySelector("#tBody").append(tr);
+    });
         
         //console.log(tr);
         
